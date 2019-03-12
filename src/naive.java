@@ -2,23 +2,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-class greedy {
-
-    private static final int MIN_NUM_DIMENSIONS = 3;
+/**
+ * Naive strategy of matrix multiplication parenthesization.
+ *
+ * This runs in Theta(n) where n is the number of dimensions in the chain of matrices.
+ *
+ */
+class naive {
 
     /**
-     * Actual implementation of the greedy strategy.
+     * Actual implementation of the naive strategy.
      *
      * @param n number of matrices
      * @param p list of dimensions
-     * @return total number of multiplications with a greedy parenthesization
+     * @return total number of multiplications with a naive parenthesization
      */
-    private static long run(int n, List<Long> p) {
+    private static long naiveMCM(int n, List<Long> p) {
         long sum = 0;
-        if (n >= MIN_NUM_DIMENSIONS) {
-
+        for (int i = 1; i < n; i++) {
+            sum += p.get(0) * p.get(i) * p.get(i + 1);
         }
-
         return sum;
     }
 
@@ -38,8 +41,9 @@ class greedy {
         }
 
         // Compute result
-        long result = run(numMatrices, dimensions);
+        long result = naiveMCM(numMatrices, dimensions);
 
+        // Write result to stdout
         System.out.println(result);
     }
 }
