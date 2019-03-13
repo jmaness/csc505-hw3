@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,10 +17,10 @@ class greedy {
      * @param p list of dimensions
      * @return total number of multiplications with a greedy parenthesization
      */
-    private static long greedyMCM(List<Long> p) {
-        if (p.size() <= 2) {
+    private static long greedyMCM(long[] p) {
+        if (p.length <= 2) {
             return 0;
-        } else if (p.size() == 3) {
+        } else if (p.length == 3) {
             return product(p);
         } else {
             /*
@@ -29,22 +30,22 @@ class greedy {
              * dimension excluding the first and last dimensions.
              */
             int k = 1;
-            for (int j = 1; j < p.size() - 1; j++) {
-                if (p.get(j) < p.get(k)) {
+            for (int j = 1; j < p.length - 1; j++) {
+                if (p[j] < p[k]) {
                     k = j;
                 }
             }
 
-            long left = greedyMCM(p.subList(0, k + 1));
-            long right = greedyMCM(p.subList(k, p.size()));
-            return left + right + p.get(0) * p.get(k) * p.get(p.size() - 1);
+            long left = greedyMCM(Arrays.copyOfRange(p,0, k + 1));
+            long right = greedyMCM(Arrays.copyOfRange(p, k, p.length));
+            return left + right + p[0] * p[k] * p[p.length - 1];
         }
     }
 
-    private static long product(List<Long> vals) {
+    private static long product(long[] vals) {
         long product = 1;
-        for (int i = 0; i < vals.size(); i++) {
-            product *= vals.get(i);
+        for (int i = 0; i < vals.length; i++) {
+            product *= vals[i];
         }
         return product;
     }
@@ -65,7 +66,9 @@ class greedy {
         }
 
         // Compute result
-        long result = greedyMCM(dimensions);
+        long result = greedyMCM(dimensions.stream()
+                .mapToLong(Long::longValue)
+                .toArray());
 
         // Write result to stdout
         System.out.println(result);

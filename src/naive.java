@@ -17,10 +17,10 @@ class naive {
      * @param p list of dimensions
      * @return total number of multiplications with a naive parenthesization
      */
-    private static long naiveMCM(int n, List<Long> p) {
+    private static long naiveMCM(int n, long[] p) {
         long sum = 0;
         for (int i = 1; i < n; i++) {
-            sum += p.get(0) * p.get(i) * p.get(i + 1);
+            sum += p[0] * p[i] * p[i + 1];
         }
         return sum;
     }
@@ -41,7 +41,10 @@ class naive {
         }
 
         // Compute result
-        long result = naiveMCM(numMatrices, dimensions);
+        long result = naiveMCM(numMatrices,
+                dimensions.stream()
+                        .mapToLong(Long::longValue)
+                        .toArray());
 
         // Write result to stdout
         System.out.println(result);
