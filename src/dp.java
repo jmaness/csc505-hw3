@@ -2,14 +2,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Dynamic programming strategy of matrix multiplication parenthesization.
+ *
+ * This is the implementation based on the pseudocode from page 375 of
+ * "Introduction to Algorithms" by Cormen, Thomas H.; Leiserson, Charles E.;
+ * Rivest, Ronald L.; Stein, Clifford.
+ *
+ * This runs in Theta(n^3) where n is the number of dimensions in the chain
+ * of matrices.
+ */
 class dp {
 
     /**
      * Actual implementation of the dp strategy.
-     *
-     * This is the implementation based on the pseudocode from page 375 of
-     * "Introduction to Algorithms" by Cormen, Thomas H.; Leiserson, Charles E.;
-     * Rivest, Ronald L.; Stein, Clifford.
      *
      * @param n number of matrices
      * @param p list of dimensions
