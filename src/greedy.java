@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * Greedy strategy of matrix multiplication parenthesization.
  *
- * This runs in Theta(n log n) where n is the number of dimensions in the chain of matrices.
+ * This runs in O(n^2) where n is the number of dimensions in the chain of matrices.
  *
  */
 class greedy {
