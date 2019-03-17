@@ -20,8 +20,13 @@ class greedy {
     private static long greedyMCM(long[] p) {
         if (p.length <= 2) {
             return 0;
+            
+        //If there are only 3 matrices to multiply both parenthesization
+            //will result in the same multiplication, so we just multiply
+            //them in sequence.
         } else if (p.length == 3) {
             return product(p);
+            
         } else {
             /*
              * Find minimum k that minimizes the cost of multiplying the
@@ -42,6 +47,11 @@ class greedy {
         }
     }
 
+    /**
+    * Calculates the number of multiplications
+    * when the matrices are multiplied in the sequence
+    * they were given, without parenthesize
+    */
     private static long product(long[] vals) {
         long product = 1;
         for (int i = 0; i < vals.length; i++) {
@@ -50,6 +60,13 @@ class greedy {
         return product;
     }
 
+    /**
+    * Main function, called when the user runs the program.
+    * Reads the given file and store the number of matrices
+    * and the dimensions that will be needed for the 
+    * multiplication.
+    * Prints out the result once the execution is done.
+    */
     public static void main(String[] args) {
         int numMatrices = 0;
         List<Long> dimensions = new ArrayList<>();
