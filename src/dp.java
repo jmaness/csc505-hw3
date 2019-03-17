@@ -44,9 +44,18 @@ class dp {
         return m[0][n-1];
     }
 
+    /**
+    * Main function, called when the user runs the program.
+    * Reads the given file and store the number of matrices
+    * and the dimensions that will be needed for the 
+    * multiplication
+    */
     public static void main(String[] args) {
+        //Number of matrices on the input
         int numMatrices = 0;
+        //List of dimensions of the matrices in the chain
         List<Long> dimensions = new ArrayList<>();
+        //Input Scanner
         Scanner scanner = new Scanner(System.in);
 
         // The first number in the stream is the number of matrices in the chain
