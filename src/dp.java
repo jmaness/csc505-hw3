@@ -48,7 +48,8 @@ class dp {
     * Main function, called when the user runs the program.
     * Reads the given file and store the number of matrices
     * and the dimensions that will be needed for the 
-    * multiplication
+    * multiplication.
+    * Prints out the result once the execution is done.
     */
     public static void main(String[] args) {
         //Number of matrices on the input
